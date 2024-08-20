@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\widget-app",
+    "\\widget-app\\src",
+    "\\widget-backend",
+    "\\widget-backend\\app",
+    "\\widget-backend\\app\\controllers",
+    "\\widget-backend\\config"
+  ],
+  "SelectedNode": "\\widget-app\\src\\OrderForm.css",
+  "PreviewInSolutionExplorer": false
+}
