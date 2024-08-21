@@ -1,0 +1,11 @@
+<!-- app/views/orders/index.html.erb -->
+<h1>All Orders</h1>
+<% @orders.each do |order| %>
+  <p>
+    <strong>Order Id:</strong> <%= order.id %><br>
+    <strong>Quantity:</strong> <%= order.quantity %><br>
+    <strong>Widget Type:</strong> <%= order.widget_type %><br>
+    <strong>Delivery Date:</strong> <%= order.delivery_date %><br>
+    <strong>Color:</strong> <%= order.color %>
+  </p>
+<% end %>

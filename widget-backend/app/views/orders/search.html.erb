@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Order</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <style>
+    body {
+      background-color: #e6f0ff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 500px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-input {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .submit-button {
+      padding: 10px 20px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #3a70b2;
+    }
+
+    .flash-message {
+      margin-top: 20px;
+    }
+
+    .notice {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .alert {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Search for an Order</h1>
+
+    <%= form_with url: search_results_orders_path, method: :post, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :order_id, "Order ID" %>
+        <%= form.number_field :order_id, class: 'form-input' %>
+      </div>
+      <%= form.submit 'Search', class: 'submit-button' %>
+
+      <% if flash[:notice] || flash[:alert] %>
+        <div class="flash-message">
+          <% flash.each do |key, message| %>
+            <div class="<%= key %>"><%= message %></div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</body>
+</html>

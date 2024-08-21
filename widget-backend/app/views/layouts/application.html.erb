@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Management</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_pack_tag 'application' %>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .navbar span, .navbar a {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <% if user_signed_in? %>
+      <span>Welcome, <%= current_user.email %></span> |
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { no_turbolink: true } %>
+      <%= link_to 'Order History', order_history_path %>
+    <% else %>
+      <%= link_to 'Login', new_user_session_path %> |
+      <%= link_to 'Sign up', new_user_registration_path %>
+    <% end %>
+  </div>
+  <%= yield %>
+</body>
+</html>

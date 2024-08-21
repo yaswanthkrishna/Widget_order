@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order History</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <style>
+    .order-history {
+      margin: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .order-table th, .order-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .order-table th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+    .order-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="order-history">
+    <h1>Your Order History</h1>
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Quantity</th>
+          <th>Widget Type</th>
+          <th>Color</th>
+          <th>Delivery Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.quantity %></td>
+            <td><%= order.widget_type %></td>
+            <td><%= order.color %></td>
+            <td><%= order.delivery_date %></td>
+            <td><%= order.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

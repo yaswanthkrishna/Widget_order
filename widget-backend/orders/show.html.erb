@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Details</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .details {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .details p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .details strong {
+      display: inline-block;
+      width: 120px;
+    }
+
+    .notice, .alert {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .notice {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .alert {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .buttons a, .buttons input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .buttons a:hover, .buttons input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .buttons a:first-child {
+      background-color: #6c757d;
+    }
+
+    .buttons a:first-child:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Order Details</h1>
+
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <div class="details">
+      <p>
+        <strong>Order Id:</strong>
+        <%= @order.id %>
+      </p>
+      <p>
+        <strong>Quantity:</strong>
+        <%= @order.quantity %>
+      </p>
+      <p>
+        <strong>Widget Type:</strong>
+        <%= @order.widget_type %>
+      </p>
+      <p>
+        <strong>Delivery Date:</strong>
+        <%= @order.delivery_date %>
+      </p>
+      <p>
+        <strong>Color:</strong>
+        <%= @order.color %>
+      </p>
+    </div>
+
+    <div class="buttons">
+      <%= link_to 'Back', new_order_path %>
+      <%= link_to 'Search', search_orders_path %>
+      <%= link_to 'Edit', edit_order_path(@order), class: 'edit-button' %>
+      <%= form_with model: @order, method: :delete, local: true do %>
+        <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>
