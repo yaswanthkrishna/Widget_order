@@ -1,0 +1,39 @@
+source "https://rubygems.org"
+
+ruby "3.3.4"
+
+gem 'bigdecimal'
+gem 'mutex_m'
+gem 'psych', '>= 5.1.2'
+gem 'rails', '~> 7.0.0'
+gem 'listen', '~> 3.3'
+gem 'sprockets-rails'
+gem 'activerecord', '~> 7.0.0'
+gem 'activerecord-oracle_enhanced-adapter', '~> 7.0.3'
+gem 'ruby-oci8', '~> 2.2.0'
+gem 'puma', '>= 5.0'
+gem 'devise'
+gem 'importmap-rails'
+gem 'turbo-rails'
+gem 'turbolinks', '~> 5'
+gem 'webpacker', '~> 5.0'
+gem 'stimulus-rails'
+gem 'jquery-rails'
+gem 'jbuilder'
+gem 'rack-cors', require: 'rack/cors'
+gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'bootsnap', require: false
+
+group :development, :test do
+  gem 'debug', platforms: %i[mri windows]
+  gem 'rspec-rails', '~> 5.0.0'
+end
+
+group :development do
+  gem 'web-console'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end

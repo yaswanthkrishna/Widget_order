@@ -1,0 +1,16 @@
+default: &default
+  adapter: oracle_enhanced
+  encoding: utf8
+  username: C##widget_user
+  password: usernew
+  host: localhost
+  database: app
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
